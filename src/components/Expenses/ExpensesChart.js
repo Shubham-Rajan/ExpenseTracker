@@ -17,6 +17,10 @@ const ExpensesChart = (props) => {
     { label: "Dec", value: 0 },
   ];
 
+  if (props.expenses.length === 0) {
+    return <h2 className="expenses-list__fallback">Found no expenses</h2>;
+  }
+
   for (const expense of props.expenses) {
     const expenseMonth = expense.date.getMonth();
     chartDataPoints[expenseMonth].value += expense.amount;
